@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Private AI Infrastructure for Europe | OneSource Cloud</title>
+<meta name="description" content="Sovereign private AI infrastructure designed, deployed, and operated by OneSource Cloud. Built under your own jurisdiction or on your premises, owned by you, GDPR and UK GDPR aligned, air-gapped and SOC 2.">
+<meta property="og:title" content="Private AI Infrastructure You Own | OneSource Cloud">
+<meta property="og:description" content="Sovereign, customer-owned private AI infrastructure under your own jurisdiction. You own the cluster, we run the platform.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#F36560;
+  --coral-bright:#F74B45;
+  --ink:#070B0F;
+  --body:#2F363D;
+  --paper:#FFFFFF;
+  --mist:#E6EBF0;
+  --cloud:#F5F7FA;
+  --dark:#0F1213;
+  --dark2:#1D1F1E;
+  --line:rgba(7,11,15,0.10);
+  --line-d:rgba(255,255,255,0.12);
+  --muted:#6E7680;
+  --maxw:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;scroll-padding-top:80px;}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.6;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:var(--ink);letter-spacing:-0.02em;line-height:1.08;font-weight:500;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+.section{padding:104px 0;}
+.section.tight{padding:84px 0;}
+.bg-cloud{background:var(--cloud);}
+.bg-mist{background:var(--mist);}
+.bg-ink{background:var(--ink);color:#fff;}
+.bg-ink h2,.bg-ink h3,.bg-ink h4{color:#fff;}
+
+/* kicker / eyebrow with check circle */
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink);margin-bottom:22px;}
+.kicker .chip{width:20px;height:20px;border-radius:50%;background:var(--ink);display:inline-flex;align-items:center;justify-content:center;flex:0 0 20px;}
+.kicker .chip svg{width:11px;height:11px;}
+.kicker.coral{color:var(--coral);}
+.kicker.coral .chip{background:var(--coral);}
+.bg-ink .kicker{color:#fff;}
+.bg-ink .kicker .chip{background:var(--coral);}
+
+h2.head{font-size:clamp(30px,4.4vw,50px);}
+h2.head .c{color:var(--coral);}
+.intro{font-size:17px;color:var(--body);max-width:46ch;}
+.bg-ink .intro{color:rgba(255,255,255,0.78);}
+
+/* two-column section header */
+.sec-head{display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:end;margin-bottom:52px;}
+.label-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);border-radius:999px;padding:7px 16px;font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--ink);margin-bottom:18px;}
+.bg-ink .label-pill{border-color:var(--line-d);color:#fff;}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:15px;padding:14px 26px;border-radius:999px;cursor:pointer;transition:.16s;white-space:nowrap;border:1.5px solid transparent;}
+.btn-coral{background:var(--coral);color:#fff;}
+.btn-coral:hover{background:var(--coral-bright);}
+.btn-dark{background:var(--ink);color:#fff;}
+.btn-dark:hover{background:#1c2026;}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line);}
+.btn-ghost:hover{border-color:var(--ink);}
+.btn-ghost-light{background:transparent;color:#fff;border-color:rgba(255,255,255,0.4);}
+.btn-ghost-light:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
+
+/* ---- header/nav ---- */
+.nav{position:sticky;top:0;z-index:60;background:rgba(7,11,15,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-d);}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;}
+.brand{display:flex;align-items:center;gap:11px;color:#fff;}
+.brand svg{width:34px;height:34px;}
+.brand .wm{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;line-height:0.98;letter-spacing:0.01em;color:#fff;}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,0.82);transition:.15s;}
+.nav-links a:hover{color:#fff;}
+.nav-links a.op{color:var(--coral);}
+.nav-cta{display:flex;align-items:center;gap:14px;}
+
+/* ---- hero ---- */
+.hero{position:relative;background:linear-gradient(180deg,rgba(7,11,15,0.74),rgba(7,11,15,0.86)),url('https://cdn.prod.website-files.com/6983857c3bc6d04385b551e6/6983aa88c406ffea76d7e30b_1.jpg') center/cover no-repeat,#070B0F;color:#fff;text-align:center;padding:130px 0 140px;}
+.hero .eyebrow{font-size:13px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.66);margin-bottom:26px;}
+.hero h1{font-size:clamp(44px,8vw,104px);font-weight:500;text-transform:uppercase;color:var(--coral);letter-spacing:-0.03em;line-height:0.98;margin-bottom:26px;}
+.hero .sub{font-size:clamp(17px,2vw,21px);color:rgba(255,255,255,0.9);max-width:60ch;margin:0 auto 34px;line-height:1.55;}
+.hero .sub b{color:#fff;font-weight:600;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:30px;}
+.res-pill{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.32);border-radius:999px;padding:9px 20px;font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#fff;}
+.res-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--coral);}
+
+/* hero flags + schematic europe map */
+.hero-flags{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:32px;}
+.hero-flags .lbl{font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.64);}
+.flag-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.flag-chip{width:30px;height:21px;border-radius:4px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,0.45);outline:1px solid rgba(255,255,255,0.18);display:inline-block;line-height:0;}
+.flag-chip svg{display:block;width:100%;height:100%;}
+.euro-map{max-width:780px;margin:42px auto 0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.14);border-radius:22px;padding:22px 24px 16px;}
+.euro-map .cap{display:flex;align-items:center;justify-content:center;gap:9px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.72);margin-bottom:6px;}
+.euro-map .cap .dot{width:7px;height:7px;border-radius:50%;background:var(--coral);}
+.euro-map svg{display:block;width:100%;height:auto;}
+.euro-map .node{filter:drop-shadow(0 0 6px rgba(243,101,96,0.75));}
+.euro-map .ctext{font-family:'Inter',sans-serif;font-size:11px;fill:rgba(255,255,255,0.74);letter-spacing:0.02em;}
+@keyframes nodepulse{0%,100%{opacity:.95}50%{opacity:.4}}
+.euro-map .ping{animation:nodepulse 2.6s ease-in-out infinite;}
+.euro-map img{display:block;width:100%;height:auto;border-radius:10px;}
+.euro-figure{position:relative;line-height:0;}
+.dc-tag{position:absolute;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;letter-spacing:.04em;color:#fff;white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,.6);pointer-events:none;}
+
+/* oneplus platform */
+.mod-ic{width:46px;height:46px;border-radius:12px;background:rgba(243,101,96,0.10);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.mod-ic svg{width:24px;height:24px;}
+.opp-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:28px;}
+.opp-chip{border:1px solid var(--line);border-radius:16px;padding:18px;background:var(--paper);}
+.opp-chip .k{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:8px;}
+.opp-chip .k .dot{width:7px;height:7px;border-radius:50%;background:var(--coral);flex:0 0 7px;}
+.opp-chip .d{font-size:13px;color:var(--body);line-height:1.5;}
+
+/* ---- cards ---- */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:32px;}
+.bg-cloud .card,.bg-mist .card{background:var(--paper);}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+
+.feature h3{font-size:21px;margin-bottom:10px;}
+.feature p{font-size:15px;color:var(--body);}
+.feature .step-no{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--coral);margin-bottom:14px;}
+
+/* offering pills */
+.pills{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px;}
+.pill{display:inline-flex;align-items:center;gap:9px;border:1.5px solid var(--coral);border-radius:999px;padding:11px 20px;font-size:14px;font-weight:500;color:var(--ink);background:var(--paper);}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--coral);}
+
+/* reason cards */
+.reason{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:30px;}
+.reason .ic{width:40px;height:40px;border-radius:11px;background:rgba(243,101,96,0.10);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.reason .ic svg{width:22px;height:22px;}
+.reason h3{font-size:19px;margin-bottom:9px;}
+.reason p{font-size:15px;color:var(--body);}
+
+/* comparison */
+.compare{margin-top:40px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--paper);}
+.crow{display:grid;grid-template-columns:1.1fr 1.25fr 1.25fr;}
+.crow>div{padding:18px 22px;border-top:1px solid var(--line);font-size:15px;display:flex;align-items:center;gap:10px;}
+.crow:first-child>div{border-top:none;}
+.crow.chead>div{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.02em;color:var(--ink);background:var(--cloud);}
+.crow.chead .osc{color:var(--coral);}
+.crow .rk{font-weight:600;color:var(--ink);}
+.crow .osc-cell{background:rgba(243,101,96,0.05);font-weight:500;color:var(--ink);}
+.crow .osc-cell svg{width:16px;height:16px;flex:0 0 16px;}
+.crow .pub{color:var(--muted);}
+
+/* economics */
+.econ .v{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:500;color:var(--ink);margin-bottom:10px;letter-spacing:-0.02em;}
+.econ .v b{color:var(--coral);font-weight:500;}
+.econ p{font-size:15px;color:var(--body);}
+
+/* industry cards */
+.ind{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:28px;transition:.16s;}
+.ind:hover{border-color:var(--coral);transform:translateY(-2px);}
+.ind .ic{width:38px;height:38px;border-radius:10px;background:var(--ink);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.ind .ic svg{width:20px;height:20px;}
+.ind h3{font-size:18px;margin-bottom:10px;}
+.ind p{font-size:14.5px;color:var(--body);margin-bottom:16px;}
+.tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{font-size:11px;font-weight:600;letter-spacing:0.04em;color:var(--coral);border:1px solid rgba(243,101,96,0.4);border-radius:999px;padding:5px 12px;}
+
+/* fabric cards (architecture) */
+.fabric{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:30px;}
+.fabric .tagline{font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--coral);margin-bottom:14px;}
+.fabric h3{font-size:21px;margin-bottom:14px;}
+.fabric ul{list-style:none;margin-bottom:22px;}
+.fabric li{font-size:14.5px;color:var(--body);padding-left:22px;position:relative;margin-bottom:9px;}
+.fabric li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:2px;background:var(--coral);}
+.fabric .stats{display:flex;gap:24px;border-top:1px solid var(--line);padding-top:18px;}
+.fabric .stat .n{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;color:var(--ink);}
+.fabric .stat .l{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+
+/* spec band (dark) */
+.spec-band{display:grid;grid-template-columns:repeat(6,1fr);gap:30px;}
+.spec .n{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3vw,40px);font-weight:600;color:#fff;letter-spacing:-0.02em;}
+.spec .n b{color:var(--coral);font-weight:600;}
+.spec .l{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:8px;}
+
+/* compliance */
+.comp-badges{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px;}
+.badge{display:inline-flex;align-items:center;gap:11px;border:1.5px solid var(--line);border-radius:14px;padding:15px 20px;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:500;color:var(--ink);}
+.badge .ic{width:22px;height:22px;flex:0 0 22px;}
+.badge .ic svg{width:22px;height:22px;}
+
+/* numbers band */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;}
+.num .v{font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,6vw,68px);font-weight:500;color:#fff;line-height:1;letter-spacing:-0.03em;}
+.num .v b{color:var(--coral);font-weight:500;}
+.num .l{font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:14px;}
+
+/* about */
+.about{background:var(--coral);border-radius:26px;padding:clamp(34px,5vw,60px);display:grid;grid-template-columns:0.85fr 1.15fr;gap:44px;align-items:center;color:#fff;}
+.about h2{color:#fff;font-size:clamp(30px,4vw,46px);}
+.about .eyebrow{font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:16px;}
+.about .rule{width:48px;height:2px;background:rgba(255,255,255,0.7);margin-top:20px;}
+.about p{color:rgba(255,255,255,0.96);font-size:16px;margin-bottom:14px;}
+
+/* CTA */
+.cta{text-align:center;}
+.cta h2{font-size:clamp(32px,4.6vw,56px);color:#fff;max-width:18ch;margin:0 auto 30px;}
+.cta .actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+.cta .mail{margin-top:26px;font-size:14px;letter-spacing:0.06em;color:rgba(255,255,255,0.6);}
+.cta .mail a{color:var(--coral);}
+
+/* footer */
+.footer{background:var(--ink);color:#fff;padding:64px 0 40px;border-top:1px solid var(--line-d);}
+.f-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;margin-bottom:46px;}
+.f-brand .wm{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;line-height:1;margin-bottom:14px;}
+.f-brand p{font-size:14px;color:rgba(255,255,255,0.66);max-width:34ch;}
+.f-col h4{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--coral);margin-bottom:16px;font-family:'Inter',sans-serif;}
+.f-col a{display:block;font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:11px;}
+.f-col a:hover{color:#fff;}
+.f-meta{display:flex;flex-wrap:wrap;gap:14px 30px;padding-top:26px;border-top:1px solid var(--line-d);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.62);}
+.f-meta .it{display:flex;align-items:center;gap:9px;}
+.f-meta .ic{width:24px;height:24px;border-radius:50%;background:var(--coral);display:inline-flex;align-items:center;justify-content:center;}
+.f-meta .ic svg{width:12px;height:12px;}
+.f-legal{margin-top:22px;font-size:12px;letter-spacing:0.06em;color:rgba(255,255,255,0.45);}
+
+@media (max-width:960px){
+  .nav-links{display:none;}
+  .sec-head,.about{grid-template-columns:1fr;gap:24px;align-items:start;}
+  .grid-3,.spec-band,.nums{grid-template-columns:1fr 1fr;}
+  .f-top{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:600px){
+  .section{padding:72px 0;}
+  .grid-3,.grid-2,.spec-band,.nums,.f-top{grid-template-columns:1fr;}
+  .crow{grid-template-columns:1fr;}
+  .crow>div{border-top:1px solid var(--line);}
+  .crow .rk{background:var(--ink);color:#fff;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
+  .fabric .stats{flex-wrap:wrap;gap:16px;}
+  .nav-cta .btn-ghost-light{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><path d="M 10 22 Q 6 22, 6 17 Q 6 13, 11 13 Q 12 8, 18 8 Q 24 8, 25 13 Q 30 13, 30 18 Q 30 22, 26 22 Z" fill="#F36560"/><path d="M 14 22 L 18 16 L 22 22 L 26 18 L 26 26 L 14 26 Z" fill="#FFFFFF"/></svg>
+      <span class="wm">ONESOURCE<br>CLOUD</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#shift">Why it matters</a>
+      <a href="#what">What we do</a>
+      <a href="#sovereignty">Sovereignty</a>
+      <a href="#industries">Industries</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#platform">Platform</a>
+      <a href="#compliance">Compliance</a>
+      <a href="#about" class="op">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost-light" href="#architecture">See how it works</a>
+      <a class="btn btn-coral" href="#contact">Contact us</a>
+    </div>
+  </div>
+</header>
+
+<span id="top"></span>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Private AI Infrastructure for Europe</div>
+    <h1>AI Infrastructure<br>You Own</h1>
+    <p class="sub">We design, deploy, and operate private GPU infrastructure for organisations across the UK and Europe, inside <b>your own country's jurisdiction</b> or on your premises. You own the cluster. We run the platform. Your data never enters a foreign public cloud.</p>
+    <div class="hero-actions">
+      <a class="btn btn-coral" href="#contact">Request a sovereignty assessment</a>
+      <a class="btn btn-ghost-light" href="#sovereignty">See how it works</a>
+    </div>
+    <span class="res-pill"><span class="dot"></span>Your jurisdiction · Customer-owned</span>
+
+    <div class="hero-flags">
+      <span class="lbl">Serving the UK, EU &amp; wider Europe</span>
+      <span class="flag-row">
+        <span class="flag-chip" title="European Union"><svg viewBox="0 0 30 21"><rect width="30" height="21" fill="#003399"/><g fill="#FFCC00"><circle cx="15" cy="3.7" r="1.15"/><circle cx="18.4" cy="4.61" r="1.15"/><circle cx="20.89" cy="7.1" r="1.15"/><circle cx="21.8" cy="10.5" r="1.15"/><circle cx="20.89" cy="13.9" r="1.15"/><circle cx="18.4" cy="16.39" r="1.15"/><circle cx="15" cy="17.3" r="1.15"/><circle cx="11.6" cy="16.39" r="1.15"/><circle cx="9.11" cy="13.9" r="1.15"/><circle cx="8.2" cy="10.5" r="1.15"/><circle cx="9.11" cy="7.1" r="1.15"/><circle cx="11.6" cy="4.61" r="1.15"/></g></svg></span>
+        <span class="flag-chip" title="United Kingdom"><svg viewBox="0 0 30 21"><defs><clipPath id="ukc"><rect width="30" height="21"/></clipPath></defs><g clip-path="url(#ukc)"><rect width="30" height="21" fill="#012169"/><path d="M0 0 L30 21 M30 0 L0 21" stroke="#fff" stroke-width="4"/><path d="M0 0 L30 21 M30 0 L0 21" stroke="#C8102E" stroke-width="2"/><rect x="12" width="6" height="21" fill="#fff"/><rect y="7.5" width="30" height="6" fill="#fff"/><rect x="13" width="4" height="21" fill="#C8102E"/><rect y="8.5" width="30" height="4" fill="#C8102E"/></g></svg></span>
+        <span class="flag-chip" title="Germany"><svg viewBox="0 0 30 21"><rect width="30" height="7" fill="#000000"/><rect y="7" width="30" height="7" fill="#DD0000"/><rect y="14" width="30" height="7" fill="#FFCE00"/></svg></span>
+        <span class="flag-chip" title="France"><svg viewBox="0 0 30 21"><rect width="10" height="21" fill="#0055A4"/><rect x="10" width="10" height="21" fill="#FFFFFF"/><rect x="20" width="10" height="21" fill="#EF4135"/></svg></span>
+        <span class="flag-chip" title="Netherlands"><svg viewBox="0 0 30 21"><rect width="30" height="7" fill="#AE1C28"/><rect y="7" width="30" height="7" fill="#FFFFFF"/><rect y="14" width="30" height="7" fill="#21468B"/></svg></span>
+        <span class="flag-chip" title="Spain"><svg viewBox="0 0 30 21"><rect width="30" height="21" fill="#AA151B"/><rect y="5.25" width="30" height="10.5" fill="#F1BF00"/></svg></span>
+        <span class="flag-chip" title="Sweden"><svg viewBox="0 0 30 21"><rect width="30" height="21" fill="#006AA7"/><rect x="9" width="4" height="21" fill="#FECC00"/><rect y="8.5" width="30" height="4" fill="#FECC00"/></svg></span>
+        <span class="flag-chip" title="Italy"><svg viewBox="0 0 30 21"><rect width="10" height="21" fill="#009246"/><rect x="10" width="10" height="21" fill="#FFFFFF"/><rect x="20" width="10" height="21" fill="#CE2B37"/></svg></span>
+      </span>
+    </div>
+
+    <div class="euro-map">
+      <div class="cap"><span class="dot"></span>European footprint · deploy where your law applies</div>
+      <div class="euro-figure">
+        <img src="europe-map.svg" alt="OneSource Cloud private AI data centers across Europe: Amsterdam, Frankfurt and Marseille" />
+        <span class="dc-tag" style="left:53.87%;top:54.25%;transform:translate(-50%,-210%)">Amsterdam</span>
+        <span class="dc-tag" style="left:58.31%;top:60.36%;transform:translate(14px,-50%)">Frankfurt</span>
+        <span class="dc-tag" style="left:53.31%;top:77.83%;transform:translate(-50%,95%)">Marseille</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1 · THE SHIFT -->
+<section class="section bg-cloud" id="shift">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker"><span class="chip"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5 L5 9 L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>The shift</div>
+        <h2 class="head">Who really controls <span class="c">your AI stack</span>?</h2>
+      </div>
+      <div>
+        <span class="label-pill">The question that stays</span>
+        <p class="intro">The buyer's question moved from "where does our data sit" to "who controls the stack". When you rent AI from a foreign hyperscaler, you inherit its jurisdiction, its rules, and its pricing. These pressures are not a passing deadline. They keep growing.</p>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card feature">
+        <div class="step-no">Control</div>
+        <h3>Foreign-cloud exposure</h3>
+        <p>A provider under another country's laws can be compelled to hand over your data, wherever the servers physically sit. Jurisdiction follows the operator, not the rack.</p>
+      </div>
+      <div class="card feature">
+        <div class="step-no">Regulation</div>
+        <h3>The bar keeps rising</h3>
+        <p>GDPR, UK GDPR, the EU AI Act, and sector rules keep tightening expectations on data governance, audit logging, and human oversight. The direction of travel is one way.</p>
+      </div>
+      <div class="card feature">
+        <div class="step-no">Cost</div>
+        <h3>Unpredictable bills</h3>
+        <p>Metered hyperscaler pricing and egress fees turn AI into a moving target your finance team cannot defend across a multi-year plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · WHAT WE DO -->
+<section class="section" id="what">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker coral"><span class="chip"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5 L5 9 L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>What we do</div>
+        <h2 class="head">We design, deploy, and <span class="c">operate</span> it. You own it.</h2>
+      </div>
+      <div>
+        <span class="label-pill">End to end</span>
+        <p class="intro">We deliver the parts, stand up the platform, and run the operations. One team owns the outcome, from first architecture to round-the-clock NOC, while the cluster itself stays yours.</p>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card feature">
+        <div class="step-no">1 · Architecture</div>
+        <h3>Design</h3>
+        <p>A non-blocking GPU, storage, and network architecture engineered around your workload profile, density, and growth plan.</p>
+      </div>
+      <div class="card feature">
+        <div class="step-no">2 · Build</div>
+        <h3>Deploy</h3>
+        <p>Containerized and air-gapped, racked under your own jurisdiction or on your premises, then validated end to end.</p>
+      </div>
+      <div class="card feature">
+        <div class="step-no">3 · Operate</div>
+        <h3>Operate</h3>
+        <p>Continuous monitoring, tuning, and lifecycle management through the OnePlus&trade; platform, so your team ships AI, not tickets.</p>
+      </div>
+    </div>
+    <div class="pills">
+      <span class="pill"><span class="dot"></span>Private AI Infrastructure</span>
+      <span class="pill"><span class="dot"></span>Managed AI Infrastructure</span>
+      <span class="pill"><span class="dot"></span>AI Storage Architecture</span>
+      <span class="pill"><span class="dot"></span>AI Networking</span>
+      <span class="pill"><span class="dot"></span>OnePlus&trade; Platform</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · SOVEREIGNTY -->
+<section class="section bg-mist" id="sovereignty">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker"><span class="chip"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5 L5 9 L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Sovereignty by architecture</div>
+        <h2 class="head">Sovereign by <span class="c">how it is built</span>, not by where it is marketed.</h2>
+      </div>
+      <div>
+        <span class="label-pill">A property of the design</span>
+        <p class="intro">Sovereignty is not a logo. Because the infrastructure is private and owned by you, and lives under the jurisdiction you answer to, there is no foreign cloud operator in the chain to be compelled, and no shared tenancy to leak across.</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="reason">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg></div>
+        <h3>Your jurisdiction by default</h3>
+        <p>Deployed in your own data center, in our or a partner facility under your national law, or on your premises. Your data stays where the law you answer to applies, whether that is UK, EU, or your home market.</p>
+      </div>
+      <div class="reason">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>You own it outright</h3>
+        <p>The cluster is your asset, not rented capacity. We deliver the components, you hold the keys, and we manage it on your behalf.</p>
+      </div>
+      <div class="reason">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div>
+        <h3>Air-gapped and isolated</h3>
+        <p>Containerized, air-gapped, single-tenant environments built to SOC 2 controls. No noisy neighbors, no shared control plane.</p>
+      </div>
+      <div class="reason">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v16l-7-3-7 3z"/><path d="M9 9h6M9 13h4"/></svg></div>
+        <h3>Compliance-ready foundation</h3>
+        <p>GDPR and UK GDPR aligned by design, with data governance, audit logging, and human oversight built into the platform you run.</p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="crow chead">
+        <div class="rk">&nbsp;</div>
+        <div class="osc">OneSource · Private</div>
+        <div>Foreign public cloud</div>
+      </div>
+      <div class="crow">
+        <div class="rk">Data jurisdiction</div>
+        <div class="osc-cell"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5 L6.5 12 L13 4" stroke="#F36560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your country, your facility or ours</div>
+        <div class="pub">Foreign-controlled entity and reach</div>
+      </div>
+      <div class="crow">
+        <div class="rk">Ownership</div>
+        <div class="osc-cell"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5 L6.5 12 L13 4" stroke="#F36560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>You own the cluster</div>
+        <div class="pub">You rent metered capacity</div>
+      </div>
+      <div class="crow">
+        <div class="rk">Tenancy</div>
+        <div class="osc-cell"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5 L6.5 12 L13 4" stroke="#F36560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Dedicated, air-gapped</div>
+        <div class="pub">Shared, multi-tenant</div>
+      </div>
+      <div class="crow">
+        <div class="rk">Cost model</div>
+        <div class="osc-cell"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5 L6.5 12 L13 4" stroke="#F36560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Fixed and predictable</div>
+        <div class="pub">Variable, plus egress fees</div>
+      </div>
+      <div class="crow">
+        <div class="rk">Control of the stack</div>
+        <div class="osc-cell"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5 L6.5 12 L13 4" stroke="#F36560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Yours, fully</div>
+        <div class="pub">Provider-defined</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · ECONOMICS -->
+<section class="section" id="economics">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker coral"><span class="chip"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5 L5 9 L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Economics</div>
+        <h2 class="head">Predictable cost, <span class="c">owned outright</span>.</h2>
+      </div>
+      <div>
+        <span class="label-pill">Plan years, not months</span>
+        <p class="intro">Hyperscaler AI bills move with usage and punish you on egress. Owned, dedicated infrastructure turns a volatile operating line into a planned asset your finance team can defend.</p>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card econ"><div class="v">Fixed <b>per GPU</b></div><p>Stable pricing replaces metered, unpredictable invoices. Plan years ahead, not months.</p></div>
+      <div class="card econ"><div class="v"><b>Zero</b> egress traps</div><p>Move data in and out of your own cluster without per-gigabyte penalties shaping your architecture.</p></div>
+      <div class="card econ"><div class="v">An <b>asset</b>, not rent</div><p>The hardware is yours and sits on your books, rather than disappearing into a monthly subscription.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · WHO IT'S FOR -->
+<section class="section bg-cloud" id="industries">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker"><span class="chip"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5 L5 9 L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Who it is for</div>
+        <h2 class="head">One platform for <span class="c">every regulated industry</span>.</h2>
+      </div>
+      <div>
+        <span class="label-pill">Same solution underneath</span>
+        <p class="intro">Dedicated compute and GPUs for AI training or inference, deployed under the compliance regime your sector demands. We map the controls; you run the workloads.</p>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="ind">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/></svg></div>
+        <h3>Healthcare &amp; Life Sciences</h3>
+        <p>Clinical AI, diagnostics, and imaging on isolated infrastructure with full control over where patient data is processed.</p>
+        <div class="tags"><span class="tag">GDPR</span><span class="tag">HIPAA-ready</span></div>
+      </div>
+      <div class="ind">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L3 8l9 4 9-4z"/><path d="M7 10v5c0 1.5 2.5 3 5 3s5-1.5 5-3v-5"/></svg></div>
+        <h3>Universities &amp; Research</h3>
+        <p>HPC-grade GPU clusters with multi-tenant workspaces for faculty, postdocs, and students, without cost surprises.</p>
+        <div class="tags"><span class="tag">HPC</span><span class="tag">Multi-tenant</span></div>
+      </div>
+      <div class="ind">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V9M12 20V5M18 20v-8"/></svg></div>
+        <h3>Financial Services &amp; FinTech</h3>
+        <p>Risk, fraud, and modelling workloads on dedicated infrastructure aligned to operational-resilience and data-control rules.</p>
+        <div class="tags"><span class="tag">GDPR</span><span class="tag">UK GDPR</span><span class="tag">DORA-aligned</span></div>
+      </div>
+      <div class="ind">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v4l3 3v11H6V10l3-3z"/><path d="M11 14h2"/></svg></div>
+        <h3>Pharma &amp; Biotech</h3>
+        <p>Drug-discovery and clinical-data pipelines with protected IP, kept inside environments you fully govern and audit.</p>
+        <div class="tags"><span class="tag">GxP-aware</span><span class="tag">GDPR</span></div>
+      </div>
+      <div class="ind">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Government &amp; Public Sector</h3>
+        <p>Air-gapped, single-tenant clusters under national jurisdiction for sensitive workloads, with NIST 800-171 / CMMC-aligned controls.</p>
+        <div class="tags"><span class="tag">Air-gapped</span><span class="tag">NIST 800-171</span></div>
+      </div>
+      <div class="ind">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Technology &amp; SaaS</h3>
+        <p>Predictable infrastructure for AI training and inference at scale, so roadmaps are not held hostage by metered cloud spend.</p>
+        <div class="tags"><span class="tag">Training</span><span class="tag">Inference</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · ARCHITECTURE -->
+<section class="section" id="architecture">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker coral"><span class="chip"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5 L5 9 L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Architecture</div>
+        <h2 class="head">Engineered for how <span class="c">AI moves data</span>.</h2>
+      </div>
+      <div>
+        <span class="label-pill">Three fabrics, one cluster</span>
+        <p class="intro">A production AI cluster is not one network. It is three fabrics, each tuned for a different traffic profile, designed independently and deployed as one coherent system.</p>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="fabric">
+        <div class="tagline">East-West · Horizontal</div>
+        <h3>GPU-to-GPU Fabric</h3>
+        <ul>
+          <li>InfiniBand NDR/XDR or RoCEv2</li>
+          <li>Non-blocking leaf-spine, 1:1</li>
+          <li>GPUDirect RDMA, SHARP, adaptive routing</li>
+        </ul>
+        <div class="stats">
+          <div class="stat"><div class="n">800G</div><div class="l">Per port</div></div>
+          <div class="stat"><div class="n">&lt;1&micro;s</div><div class="l">Latency</div></div>
+          <div class="stat"><div class="n">95%</div><div class="l">Scaling</div></div>
+        </div>
+      </div>
+      <div class="fabric">
+        <div class="tagline">North-South · Storage</div>
+        <h3>Storage-to-GPU Fabric</h3>
+        <ul>
+          <li>Dataset ingestion at line rate</li>
+          <li>Parallel file systems (Lustre, WekaFS)</li>
+          <li>RDMA-enabled data paths end to end</li>
+        </ul>
+        <div class="stats">
+          <div class="stat"><div class="n">400G</div><div class="l">Per port</div></div>
+          <div class="stat"><div class="n">RDMA</div><div class="l">End to end</div></div>
+        </div>
+      </div>
+      <div class="fabric">
+        <div class="tagline">Management · Independent</div>
+        <h3>OOB Management Network</h3>
+        <ul>
+          <li>BMC / IPMI / Redfish access</li>
+          <li>PXE boot and firmware lifecycle</li>
+          <li>Telemetry out of the data path</li>
+        </ul>
+        <div class="stats">
+          <div class="stat"><div class="n">25G</div><div class="l">Server links</div></div>
+          <div class="stat"><div class="n">100%</div><div class="l">Isolated</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- spec band -->
+<section class="section tight bg-ink">
+  <div class="wrap">
+    <div class="kicker"><span class="chip"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5 L5 9 L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Reference spec</div>
+    <div class="spec-band" style="margin-top:14px;">
+      <div class="spec"><div class="n">800G</div><div class="l">Per GPU port</div></div>
+      <div class="spec"><div class="n">&lt;1<b>&micro;s</b></div><div class="l">Switch latency</div></div>
+      <div class="spec"><div class="n">95<b>%</b></div><div class="l">Scaling efficiency</div></div>
+      <div class="spec"><div class="n">1:1</div><div class="l">Non-blocking</div></div>
+      <div class="spec"><div class="n">0</div><div class="l">Packet drops</div></div>
+      <div class="spec"><div class="n">24/7</div><div class="l">Fabric NOC</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ONEPLUS PLATFORM -->
+<section class="section bg-cloud" id="platform">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker coral"><span class="chip"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5 L5 9 L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>OnePlus&trade; Platform</div>
+        <h2 class="head">Your infrastructure <span class="c">control layer</span>.</h2>
+      </div>
+      <div>
+        <span class="label-pill">Three core modules</span>
+        <p class="intro">OnePlus&trade; turns fragmented GPU infrastructure into one scalable, developer-friendly AI execution platform. Monitor the cluster, orchestrate workloads, and hand your team self-service environments, all from a single pane.</p>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="fabric">
+        <div class="mod-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><line x1="7" y1="7" x2="9.5" y2="7"/><line x1="7" y1="17" x2="9.5" y2="17"/></svg></div>
+        <div class="tagline">Operate</div>
+        <h3>Infrastructure Portal</h3>
+        <ul>
+          <li>GPU, network &amp; storage management</li>
+          <li>Capacity planning &amp; auto recovery</li>
+          <li>Unified monitoring &amp; alerts</li>
+          <li>On-demand resource scaling</li>
+        </ul>
+      </div>
+      <div class="fabric">
+        <div class="mod-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
+        <div class="tagline">Build</div>
+        <h3>PaaS Studio</h3>
+        <ul>
+          <li>Kubernetes lifecycle management</li>
+          <li>Workflow orchestration</li>
+          <li>Compute &amp; service profile templates</li>
+          <li>Usage &amp; performance metrics</li>
+        </ul>
+      </div>
+      <div class="fabric">
+        <div class="mod-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><line x1="13.5" y1="6" x2="10.5" y2="18"/></svg></div>
+        <div class="tagline">Develop</div>
+        <h3>Developer Hub</h3>
+        <ul>
+          <li>Serverless AI workspaces</li>
+          <li>One-click launch: code, data, models</li>
+          <li>Jupyter, inference, Kubeflow support</li>
+          <li>PyTorch, TensorFlow, MPI, DDP ready</li>
+          <li>GitHub / GitLab integration</li>
+        </ul>
+      </div>
+    </div>
+    <div class="opp-strip">
+      <div class="opp-chip"><div class="k"><span class="dot"></span>Monitoring</div><div class="d">Built-in Grafana and Prometheus dashboards for cluster health, job status, and utilization.</div></div>
+      <div class="opp-chip"><div class="k"><span class="dot"></span>Usage analytics</div><div class="d">GPU utilization, temperature, power, memory, and job-queue metrics in real time.</div></div>
+      <div class="opp-chip"><div class="k"><span class="dot"></span>Cost &amp; usage reports</div><div class="d">Monthly GPU usage and cost reporting, broken down by project and team.</div></div>
+      <div class="opp-chip"><div class="k"><span class="dot"></span>Logging &amp; audit</div><div class="d">User activity logs and system event audit trails for full traceability.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · COMPLIANCE -->
+<section class="section" id="compliance">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker coral"><span class="chip"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5 L5 9 L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Compliance</div>
+        <h2 class="head">Compliance, <span class="c">built in</span>.</h2>
+      </div>
+      <div>
+        <span class="label-pill">Aligned to your regime</span>
+        <p class="intro">Every environment ships on a compliance foundation, then adapts to the regime your sector and your funders require. We align the controls; you keep the evidence and the authority.</p>
+      </div>
+    </div>
+    <div class="comp-badges">
+      <span class="badge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>GDPR</span>
+      <span class="badge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>UK GDPR</span>
+      <span class="badge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>EU AI Act-ready</span>
+      <span class="badge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-6"/></svg></span>SOC 2</span>
+      <span class="badge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span>NIST 800-171 / CMMC</span>
+      <span class="badge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F36560" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M9 12h6M9 16h4"/></svg></span>HIPAA-ready</span>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="section tight bg-ink" id="numbers">
+  <div class="wrap">
+    <div class="kicker"><span class="chip"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5 L5 9 L10 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Proven at scale</div>
+    <div class="nums" style="margin-top:20px;">
+      <div class="num"><div class="v">96<b>+</b></div><div class="l">Data centers</div></div>
+      <div class="num"><div class="v">50<b>+</b></div><div class="l">Countries</div></div>
+      <div class="num"><div class="v">200K<b>+</b></div><div class="l">GPUs deployed</div></div>
+      <div class="num"><div class="v">20<b>+</b></div><div class="l">Years in infrastructure</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="about">
+      <div>
+        <div class="eyebrow">About us</div>
+        <h2>OneSource Cloud</h2>
+        <div class="rule"></div>
+      </div>
+      <div>
+        <p>OneSource Cloud delivers private AI infrastructure that regulated organisations across Europe own and we operate. We bring 20+ years of mission-critical infrastructure expertise to teams that need performance, control, and compliance without hyperscaler lock-in or cost surprises.</p>
+        <p>Headquartered in Richardson, Texas, we deliver across Europe under your own jurisdiction, in your own facility or a partner facility, or on your premises. The model is simple: you own the cluster, we hand you the platform and run the operations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section bg-ink cta" id="contact">
+  <div class="wrap">
+    <h2>Bring your AI workloads into <span style="color:var(--coral)">your own jurisdiction</span>.</h2>
+    <div class="actions">
+      <a class="btn btn-coral" href="https://www.onesourcecloud.net/company/contact-us">Request a sovereignty assessment</a>
+      <a class="btn btn-ghost-light" href="https://www.onesourcecloud.net/company/contact-us">Book a private AI consultation</a>
+    </div>
+    <div class="mail">Talk to us · <a href="mailto:sales@onesourcecloud.net">sales@onesourcecloud.net</a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <div class="wm">ONESOURCE CLOUD</div>
+        <p>Build, operate, and scale enterprise AI on secure, high-performance private infrastructure, under your control and your jurisdiction.</p>
+      </div>
+      <div class="f-col">
+        <h4>Services</h4>
+        <a href="https://www.onesourcecloud.net/private-ai-infrastructure">Private AI Infrastructure</a>
+        <a href="https://www.onesourcecloud.net/managed-ai-infrastructure">Managed AI Infrastructure</a>
+        <a href="https://www.onesourcecloud.net/ai-storage-architecture">AI Storage Architecture</a>
+        <a href="https://www.onesourcecloud.net/high-performance-ai-networking">AI Networking</a>
+        <a href="https://www.onesourcecloud.net/ai-infrastructure-platform">OnePlus&trade; Platform</a>
+      </div>
+      <div class="f-col">
+        <h4>Company</h4>
+        <a href="https://www.onesourcecloud.net/company/about-us">About</a>
+        <a href="https://www.onesourcecloud.net/company/leadership">Leadership</a>
+        <a href="https://www.onesourcecloud.net/company/career">Careers</a>
+        <a href="https://www.onesourcecloud.net/company/contact-us">Contact</a>
+      </div>
+      <div class="f-col">
+        <h4>Resources</h4>
+        <a href="https://www.onesourcecloud.net/blog-home">Blog</a>
+        <a href="https://www.onesourcecloud.net/use-case-home">Case Studies</a>
+        <a href="https://www.linkedin.com/company/onesource-cloud">LinkedIn</a>
+        <a href="https://www.youtube.com/@cloudonesource">YouTube</a>
+      </div>
+    </div>
+    <div class="f-meta">
+      <div class="it"><span class="ic"><svg viewBox="0 0 12 12" fill="none"><path d="M6 1 C 3.5 1, 1.5 3, 1.5 5.5 C 1.5 8, 6 11, 6 11 C 6 11, 10.5 8, 10.5 5.5 C 10.5 3, 8.5 1, 6 1 Z" stroke="#fff" stroke-width="1" fill="none"/><circle cx="6" cy="5.5" r="1.5" stroke="#fff" stroke-width="1" fill="none"/></svg></span>900 N Dorothy Dr · Richardson, TX 75081</div>
+      <div class="it"><span class="ic"><svg viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="#fff" stroke-width="1" fill="none"/><path d="M1.5 6 H 10.5 M 6 1.5 C 8 3.5, 8 8.5, 6 10.5 C 4 8.5, 4 3.5, 6 1.5" stroke="#fff" stroke-width="1" fill="none"/></svg></span>onesourcecloud.net</div>
+      <div class="it"><span class="ic"><svg viewBox="0 0 12 12" fill="none"><rect x="1.5" y="3" width="9" height="6" rx="1" stroke="#fff" stroke-width="1" fill="none"/><path d="M2 3.5 L 6 6.5 L 10 3.5" stroke="#fff" stroke-width="1" fill="none" stroke-linecap="round"/></svg></span>sales@onesourcecloud.net</div>
+    </div>
+    <div class="f-legal">&copy; OneSource Cloud · Private AI Infrastructure · Built for your jurisdiction</div>
+  </div>
+</footer>
+
+</body>
+</html>
